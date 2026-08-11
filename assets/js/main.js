@@ -41,6 +41,105 @@
   }
 
   /**
+   * Render Habilidades (skills) desde PORTFOLIO_DATA
+   */
+  const renderSkills = () => {
+    const container = select('.skills-content')
+    if (!container || typeof PORTFOLIO_DATA === 'undefined') return
+    const skills = PORTFOLIO_DATA.skills
+    const half = Math.ceil(skills.length / 2)
+    const cols = [skills.slice(0, half), skills.slice(half)]
+    cols.forEach((list, i) => {
+      const col = document.createElement('div')
+      col.className = 'col-lg-6'
+      col.setAttribute('data-aos', 'fade-up')
+      if (i === 1) col.setAttribute('data-aos-delay', '100')
+      list.forEach(skill => {
+        const progress = document.createElement('div')
+        progress.className = 'progress'
+        progress.innerHTML = `
+          <span class="skill">${skill.name} <i class="val">${skill.level}%</i></span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" role="progressbar" aria-valuenow="${skill.level}" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>`
+        col.appendChild(progress)
+      })
+      container.appendChild(col)
+    })
+  }
+
+  /**
+   * Render Portfolio desde PORTFOLIO_DATA
+   */
+  const renderPortfolio = () => {
+    const container = select('.portfolio-container')
+    if (!container || typeof PORTFOLIO_DATA === 'undefined') return
+    PORTFOLIO_DATA.portfolio.forEach(item => {
+      const col = document.createElement('div')
+      col.className = 'col-lg-4 col-md-6 portfolio-item'
+      const stack = item.stack ? `
+          <div class="portfolio-stack">
+            ${item.stack.map(s => `<img src="${s.file}" alt="${s.name}" title="${s.name}" loading="lazy">`).join('')}
+          </div>` : ''
+      col.innerHTML = `
+        <div class="portfolio-wrap">
+          <img src="${item.image}" class="img-fluid" alt="${item.title}" loading="lazy">
+          ${stack}
+          <div class="portfolio-links">
+            <a href="${item.image}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.title}"><i class="bx bx-plus"></i></a>
+            <a href="${item.url}" target="_blank" title="${item.urlTitle}"><i class="bx bx-link"></i></a>
+          </div>
+        </div>`
+      container.appendChild(col)
+    })
+  }
+
+  /**
+   * Render Testimonios desde PORTFOLIO_DATA
+   */
+  const renderTestimonials = () => {
+    const wrapper = select('.testimonials-slider .swiper-wrapper')
+    if (!wrapper || typeof PORTFOLIO_DATA === 'undefined') return
+    PORTFOLIO_DATA.testimonials.forEach(t => {
+      const slide = document.createElement('div')
+      slide.className = 'swiper-slide'
+      slide.innerHTML = `
+        <div class="testimonial-item">
+          <p>
+            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+            ${t.text}
+            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+          </p>
+          <img src="${t.image}" class="testimonial-img" alt="${t.name}" loading="lazy">
+          <h3>${t.name}</h3>
+          <h4>${t.role}</h4>
+        </div>`
+      wrapper.appendChild(slide)
+    })
+  }
+
+  /**
+   * Render secciones con datos dinámicos
+   */
+  renderSkills()
+  renderPortfolio()
+  renderTestimonials()
+
+  /**
+   * Valores dinámicos (edad y año de copyright)
+   */
+  const setAge = () => {
+    const el = select('#age')
+    if (el) el.textContent = new Date().getFullYear() - 1979
+  }
+  const setYear = () => {
+    const el = select('#year')
+    if (el) el.textContent = new Date().getFullYear()
+  }
+  setAge()
+  setYear()
+
+  /**
    * Navbar links active state on scroll
    */
   let navbarlinks = select('#navbar .scrollto', true)
@@ -196,30 +295,13 @@
   });
 
   /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
    * Testimonials slider
    */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
+  const testimonialsSlider = new Swiper('.testimonials-slider', {
+    speed: 900,
     loop: true,
     autoplay: {
-      delay: 5000,
+      delay: 8000,
       disableOnInteraction: false
     },
     slidesPerView: 'auto',
@@ -240,6 +322,19 @@
       }
     }
   });
+
+  /**
+   * Pausar el carrusel al pasar el cursor y reanudarlo al salir
+   */
+  const testimonialsEl = select('.testimonials-slider')
+  if (testimonialsEl) {
+    testimonialsEl.addEventListener('mouseenter', () => {
+      if (testimonialsSlider.autoplay) testimonialsSlider.autoplay.stop()
+    })
+    testimonialsEl.addEventListener('mouseleave', () => {
+      if (testimonialsSlider.autoplay) testimonialsSlider.autoplay.start()
+    })
+  }
 
   /**
    * Animation on scroll
