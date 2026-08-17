@@ -111,18 +111,19 @@ const PORTFOLIO_DATA = {
         { name: "Bootstrap", file: "assets/img/stack/bootstrap.svg" }
       ]
     },
-    {
-      title: "Golondrina - Trámites",
-      image: "assets/img/portfolio/github.jpg",
-      url: "https://mariodemoder.github.io/golondrina/",
-      urlTitle: "Ver proyecto",
-      stack: [
-        { name: "HTML", file: "assets/img/stack/html5.svg" },
-        { name: "CSS", file: "assets/img/stack/css3.svg" },
-        { name: "JavaScript", file: "assets/img/stack/javascript.svg" },
-        { name: "Bootstrap", file: "assets/img/stack/bootstrap.svg" }
-      ]
-    }
+      {
+        title: "RAG Embeddings",
+        image: "assets/img/portfolio/RAG1.jpg",
+        url: "https://github.com/mariodemoder/RAGEmbeddings",
+        urlTitle: "Ver repositorio",
+        stack: [
+          { name: "PostgreSQL", file: "assets/img/stack/postgresql.svg" },
+          { name: "JavaScript", file: "assets/img/stack/javascript.svg" },
+          { name: "HTML", file: "assets/img/stack/html5.svg" },
+          { name: "CSS", file: "assets/img/stack/css3.svg" },
+          { name: "Bootstrap", file: "assets/img/stack/bootstrap.svg" }
+        ]
+      }
   ],
 
   testimonials: [
