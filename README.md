@@ -36,4 +36,4 @@ git commit -m "mensaje"
 git push origin main
 ```
 
-El sitio se despliega con GitHub Pages configurado en **Settings → Pages → Deploy from a branch** (rama `main`, carpeta `/root`).
+El sitio se despliega con GitHub Pages configurado en: **Settings → Pages → Deploy from a branch** (rama `main`, carpeta `/root`).
