@@ -84,7 +84,7 @@
         </div>` : ''
       col.innerHTML = `
         <div class="portfolio-wrap">
-          <img src="${item.image}" class="img-fluid" alt="${item.title}" loading="lazy">
+          <img src="${item.image}" class="img-fluid" alt="${item.title}">
           <div class="portfolio-stack">${stackIcons}</div>
           <div class="portfolio-links">
             <a href="${item.image}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.title}"><i class="bx bx-plus"></i></a>
@@ -298,6 +298,10 @@
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item'
+      });
+
+      portfolioContainer.querySelectorAll('img').forEach(img => {
+        img.addEventListener('load', () => portfolioIsotope.layout());
       });
 
       let portfolioFilters = select('#portfolio-flters li', true);

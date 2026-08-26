@@ -523,6 +523,12 @@ section {
   z-index: 1;
   border-radius: 8px;
   cursor: pointer;
+  height: 420px;
+}
+.portfolio .portfolio-wrap > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
 }
 .portfolio .portfolio-wrap:hover {
   transform: translateY(-5px);
