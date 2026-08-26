@@ -77,20 +77,53 @@
     PORTFOLIO_DATA.portfolio.forEach(item => {
       const col = document.createElement('div')
       col.className = 'col-lg-4 col-md-6 portfolio-item'
-      const stack = item.stack ? `
-          <div class="portfolio-stack">
-            ${item.stack.map(s => `<img src="${s.file}" alt="${s.name}" title="${s.name}" loading="lazy">`).join('')}
-          </div>` : ''
+      const stackIcons = item.stack ? item.stack.map(s => `<img src="${s.file}" alt="${s.name}" title="${s.name}" loading="lazy">`).join('') : ''
+      const overlayStack = item.stack ? `
+        <div class="portfolio-overlay-stack">
+          ${item.stack.map(s => `<img src="${s.file}" alt="${s.name}" title="${s.name}" loading="lazy">`).join('')}
+        </div>` : ''
       col.innerHTML = `
         <div class="portfolio-wrap">
           <img src="${item.image}" class="img-fluid" alt="${item.title}" loading="lazy">
-          ${stack}
+          <div class="portfolio-stack">${stackIcons}</div>
           <div class="portfolio-links">
             <a href="${item.image}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.title}"><i class="bx bx-plus"></i></a>
             <a href="${item.url}" target="_blank" title="${item.urlTitle}"><i class="bx bx-link"></i></a>
           </div>
+          <div class="portfolio-overlay">
+            <div class="portfolio-overlay-content">
+              <h4>${item.title}</h4>
+              <p>${item.description || ''}</p>
+              ${overlayStack}
+              <div class="portfolio-overlay-links">
+                <a href="${item.image}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${item.title}"><i class="bx bx-expand"></i> Ver imagen</a>
+                <a href="${item.url}" target="_blank" title="${item.urlTitle}"><i class="bx bx-link-external"></i> Ver proyecto</a>
+              </div>
+            </div>
+          </div>
         </div>`
       container.appendChild(col)
+    })
+
+    // Click para expandir/colapsar tarjetas
+    document.addEventListener('click', (e) => {
+      const wrap = e.target.closest('.portfolio-wrap')
+      if (wrap) {
+        const wasExpanded = wrap.classList.contains('expanded')
+        // Colapsar todas las tarjetas
+        document.querySelectorAll('.portfolio-wrap.expanded').forEach(el => el.classList.remove('expanded'))
+        // Si no estaba expandida, expandirla
+        if (!wasExpanded) {
+          wrap.classList.add('expanded')
+        }
+      }
+    })
+
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.portfolio-wrap.expanded').forEach(el => el.classList.remove('expanded'))
+      }
     })
   }
 

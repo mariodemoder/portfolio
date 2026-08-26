@@ -22,6 +22,7 @@ const PORTFOLIO_DATA = {
   portfolio: [
     {
       title: "EINA - ERP Concesionario",
+      description: "ERP para talleres y concesionarios con gestión integral de stocks, clientes y facturación.",
       image: "assets/img/portfolio/eina2.png",
       url: "https://eina.sinigual.com/login",
       urlTitle: "EINA - Barcelona",
@@ -37,6 +38,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Mini Dev JS - Juego de Memoria",
+      description: "Juego de memoria interactivo desarrollado con JavaScript vanilla, HTML y CSS.",
       image: "assets/img/portfolio/portfoliomuro.jpg",
       url: "https://mariodemoder.github.io/juegodememoria-JS/",
       urlTitle: "Ver proyecto",
@@ -48,6 +50,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Ayuntamiento de Mercedes",
+      description: "Portal institucional del municipio con gestión de contenido y servicios públicos.",
       image: "assets/img/portfolio/mercedesciudaddetodos.jpg",
       url: "http://nw.mercedes.gob.ar/",
       urlTitle: "Sitio del municipio",
@@ -63,6 +66,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Tedear S.A.",
+      description: "Software de gestión empresarial para la industria del té con reportes y seguimiento.",
       image: "assets/img/portfolio/logo-tedear.png",
       url: "http://www.tedear.com.ar/",
       urlTitle: "Tedear S.A.",
@@ -73,6 +77,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Remediar - Ministerio de Salud",
+      description: "Sistema de gestión de medicamentos del programa Remediar para el Ministerio de Salud.",
       image: "assets/img/portfolio/Remediar.jpg",
       url: "https://www.argentina.gob.ar/salud/remediar",
       urlTitle: "Ver detalle",
@@ -83,6 +88,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "Proyectos en GitHub",
+      description: "Repositorio con múltiples proyectos open source y experimentos de desarrollo.",
       image: "assets/img/portfolio/githubMariodemoder.png",
       url: "https://github.com/mariodemoder",
       urlTitle: "Ver repositorios",
@@ -92,6 +98,7 @@ const PORTFOLIO_DATA = {
     },
     {
       title: "PokeSearch - Ejemplo Full Stack",
+      description: "App full stack para buscar y explorar Pokemon con Laravel y Vue 3.",
       image: "assets/img/portfolio/github.jpg",
       url: "https://github.com/mariodemoder/pokesearch",
       urlTitle: "Ver repositorio",
@@ -102,28 +109,35 @@ const PORTFOLIO_DATA = {
       ]
     },
     {
-      title: "CRUD LocalStorage JS",
-      image: "assets/img/portfolio/github.jpg",
-      url: "https://github.com/mariodemoder/crudLocalJS",
+      title: "RAG Embeddings",
+      description: "Sistema de Retrieval-Augmented Generation con embeddings y búsqueda semántica.",
+      image: "assets/img/portfolio/RAG1.jpg",
+      url: "https://github.com/mariodemoder/RAGEmbeddings",
       urlTitle: "Ver repositorio",
       stack: [
+        { name: "PostgreSQL", file: "assets/img/stack/postgresql.svg" },
         { name: "JavaScript", file: "assets/img/stack/javascript.svg" },
+        { name: "HTML", file: "assets/img/stack/html5.svg" },
+        { name: "CSS", file: "assets/img/stack/css3.svg" },
         { name: "Bootstrap", file: "assets/img/stack/bootstrap.svg" }
       ]
     },
-      {
-        title: "RAG Embeddings",
-        image: "assets/img/portfolio/RAG1.jpg",
-        url: "https://github.com/mariodemoder/RAGEmbeddings",
-        urlTitle: "Ver repositorio",
-        stack: [
-          { name: "PostgreSQL", file: "assets/img/stack/postgresql.svg" },
-          { name: "JavaScript", file: "assets/img/stack/javascript.svg" },
-          { name: "HTML", file: "assets/img/stack/html5.svg" },
-          { name: "CSS", file: "assets/img/stack/css3.svg" },
-          { name: "Bootstrap", file: "assets/img/stack/bootstrap.svg" }
-        ]
-      }
+    {
+      title: "Rick & Morty API Integration",
+      description: "App full stack con Laravel 12 y Vue 3 que integra la API de Rick and Morty con sincronización de datos.",
+      image: "assets/img/portfolio/rickandmorty-collage.png",
+      url: "https://github.com/mariodemoder/RickAndMorty",
+      urlTitle: "Ver repositorio",
+      stack: [
+        { name: "Laravel 12", file: "assets/img/stack/laravel.svg" },
+        { name: "Vue 3", file: "assets/img/stack/vue.svg" },
+        { name: "MySQL", file: "assets/img/stack/mysql.svg" },
+        { name: "Docker", file: "assets/img/stack/docker.svg" },
+        { name: "JavaScript", file: "assets/img/stack/javascript.svg" },
+        { name: "HTML", file: "assets/img/stack/html5.svg" },
+        { name: "CSS", file: "assets/img/stack/css3.svg" }
+      ]
+    }
   ],
 
   testimonials: [
